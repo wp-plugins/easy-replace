@@ -4,7 +4,9 @@ Plugin Name: Easy Replace
 Plugin URI: http://www.think201.com
 Description: Easy Replace (ER) helps you find and replace phrases at ease
 Author: Think201
-Version: 1.0
+Text Domain: easy-replace
+Domain Path: /languages
+Version: 1.1
 Author URI: http://www.think201.com
 License: GPL v1
 
@@ -35,7 +37,7 @@ if(version_compare(PHP_VERSION, '5.2', '<' ))
 	{
 		require_once(ABSPATH . 'wp-admin/includes/plugin.php');
 		deactivate_plugins( __FILE__ );
-		wp_die( sprintf( __( 'Easy Replace requires PHP 5.2 or higher, as does WordPress 3.2 and higher. The plugin has now disabled itself.', 'Mins To Read' ), '<a href="http://wordpress.org/">', '</a>' ));
+		wp_die( sprintf( __( 'Easy Replace requires PHP 5.2 or higher, as does WordPress 3.2 and higher. The plugin has now disabled itself.', 'Easy Replace' ), '<a href="http://wordpress.org/">', '</a>' ));
 	} 
 	else 
 	{
@@ -50,7 +52,7 @@ if ( !defined( 'ER_BASENAME' ) )
 define( 'ER_BASENAME', plugin_basename( __FILE__ ) );
 
 if ( !defined( 'ER_VERSION' ) )
-define('ER_VERSION', '1.0' );
+define('ER_VERSION', '1.1' );
 
 if ( !defined( 'ER_PLUGIN_DIR' ) )
 define('ER_PLUGIN_DIR', dirname(__FILE__) );
@@ -66,6 +68,10 @@ require_once ER_PLUGIN_DIR .'/includes/er-admin.php';
 require_once ER_PLUGIN_DIR .'/includes/er.php';
 require_once ER_PLUGIN_DIR .'/includes/er-engine.php';
 
+function easy_replace_load_plugin_textdomain() {
+    load_plugin_textdomain( 'easy-replace', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+}
+add_action( 'plugins_loaded', 'easy_replace_load_plugin_textdomain' );
 
 register_activation_hook( __FILE__, array('ER_Install', 'activate') );
 register_deactivation_hook( __FILE__, array('ER_Install', 'deactivate') );

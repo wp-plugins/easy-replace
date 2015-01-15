@@ -27,12 +27,13 @@ class EREngine
 
 		// Match and replace it 
 		foreach ($Data as $row ) 
-		{
-			$Search[] = $row->sourcestring;
+		{	
+			// Making search string case insensitive and whole string match 
+			$Search[] = '/'.$row->sourcestring.'\b/i';
 			$Replace[] = $row->destinationstring;
 		}
 		
-		$content = str_replace( $Search, $Replace, $content);
+		$content = preg_replace( $Search, $Replace, $content);
 
 		return $content;
 

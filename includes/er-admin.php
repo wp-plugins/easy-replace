@@ -25,7 +25,7 @@ class ERAdmin
         require_once ER_PLUGIN_DIR .'/includes/post-requests.php';
         require_once ER_PLUGIN_DIR .'/includes/er-data.php';
         require_once ER_PLUGIN_DIR .'/includes/er-engine.php';
-
+        require_once ER_PLUGIN_DIR .'/includes/er-listtable.php';
     }
 
     public function menuItems()
@@ -44,6 +44,7 @@ class ERAdmin
             wp_enqueue_media();        
             wp_enqueue_script( 'er-ajax-request', plugins_url( 'easy-replace/js/er-admin.js' ), array( 'jquery' ), false, true );
             wp_localize_script( 'er-ajax-request', 'ERAjax', array( 'ajaxurl' => plugins_url( 'admin-ajax.php' ) ) );
+            wp_enqueue_script( 'er-think201-validator', plugins_url( 'easy-replace/assets/js/think201-validator.js' ), array( 'jquery' ), false, true );
             
             wp_enqueue_style( 'er-css', plugins_url( 'easy-replace/assets/css/er.css' ), array(), ER_VERSION, 'all' );
         }

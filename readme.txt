@@ -4,8 +4,8 @@ Tags: find, replace, string, replace, word, match
 Requires at least: 3.5.2
 Donate link: http://www.think201.com/
 Tested up to: 4.1
-Stable tag: 1.0
-Version: 1.0
+Stable tag: 1.1
+Version: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,6 +20,7 @@ Easy Replace provides you easiest way to find a phrase and replace in no time. T
 
 - Easy find and replace for your content
 - Covers post, page,nav menu item
+- Easy Replace searches the string and replaces it dynamically at run time.
 
 * Like the plugin or want features? Tweet to us @think201
 
@@ -66,7 +67,14 @@ To be updated soon
 
 * Initial version of Easy Replace Plugin checkin.
 
+= 1.1 =
+Please uninstall & reinstall the plugin to work properly. You would loose previous additions made.
+
 == Changelog ==
 
 = 1.0 =
 - First commit to the WP repository.
+
+= 1.1 = 
+- UI Enhancements 
+- Whole word match feature integrated

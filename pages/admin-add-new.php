@@ -4,8 +4,8 @@ $post_types = get_post_types( '', 'names' );
 
 <div class="wrap">
  	<h2>
- 		Add New
- 		<a href="<?php print admin_url('admin.php?page=er-dashboard'); ?>" class="add-new-h2">Back</a>
+ 		<?php esc_html_e( 'Add New' , 'easy-replace');?>
+ 		<a href="<?php print admin_url('admin.php?page=er-dashboard'); ?>" class="add-new-h2"><?php esc_html_e( 'Back' , 'easy-replace');?></a>
  	</h2>
 	
 	<div id="message" class="updated below-h2 fr-msg er_success_msg">
@@ -21,45 +21,51 @@ $post_types = get_post_types( '', 'names' );
 		</div>
 		<div class="tbox-body">
 			<form name="er_add_form" id="er_add_form" action="#" method="post">		        
-		        <section>
 		            <input type="hidden" name="action" value="page_add_new">
-		            <div class="twp-row">
-		                <div class="twp-col-lg-12 twp-col-md-12 twp-col-sm-12 twp-col-xs-12">
-		                    <div class="fr-fields-container">  
-		                        <label for="sourcestring">Source String:</label>
-		                        <input type="text" id="sourcestring" name="sourcestring" placeholder="String to be Found">
-		                    </div>
-		                    <div class="fr-fields-container">  
-		                        <label for="destinationstring">Destination String:</label>
-		                        <input type="text" id="destinationstring" name="destinationstring" placeholder="String to be Replaced" value="">
-		                    </div>
-		                     <div class="fr-fields-container"> 
-		                        <label for="replaceat">Replace At:</label>
-			                     <select name="replaceat">
-			                     	<option value="">Select a Post Type</option>
-									<?php
-									foreach ( $post_types as $post_type ) 
-									{
-									?>
-										<option value="<?php echo $post_type;?>"><?php echo $post_type;?></option>
-									<?php
-									}	
-									?>		                     
-			                    	
-			                    </select>
-		                     </div>
-		      
-		                </div>		                
-		            </div> 
-		        </section>
-		        <div class="tclear"></div>
-		        <button onClick="ERForm.post('#er_add_form')" class="button button-primary" type="button">Add </button>
+		            	<table class="form-table">
+		            		<tr valign="top">
+		            			<th scope="row">
+		            				<label for="sourcestring">SourceString:</label>
+		            			</td>
+		            			<td>
+		                       		 <input type="text" id="sourcestring" name="sourcestring" placeholder="String to be Found" data-validations="required">
+		            			</td>
+		            		</tr>
+		            		<tr valign="top">
+		            			<th scope="row">
+		            				 <label for="destinationstring">Destination String:</label>
+		            			</td>
+		            			<td>
+		                       		 <input type="text" id="destinationstring" name="destinationstring" placeholder="String to be Replaced" value="" data-validations="required">
+		            			</td>
+		            		</tr>
+		            		<tr valign="top">
+		            			<th scope="row">
+		            				<label for="replaceat">Replace At:</label>
+		            			</td>
+		            			<td>
+		            				<select name="replaceat">
+		            					<option value="">Select a Post Type</option>
+		            					<?php
+		            					foreach ( $post_types as $post_type ) 
+		            					{
+		            						?>
+		            						<option value="<?php echo $post_type;?>"><?php echo $post_type;?></option>
+		            						<?php
+		            					}	
+		            					?>		                     
+		            				</select>
+		            			</td>
+		            		</tr>
+		            	</table>
+		            	<p class="submit">	
+		            		 <button onClick="ERForm.post('#er_add_form')" class="button button-primary" type="button">Add Replacement</button>
+		            	</p>
 		    </form>
-
 		</div>
 
 		<div class="tbox-footer">
-		  Add the details for the form reader. Make sure your cross check the details provided.
+		  Provide string details to be searched for and replaced with. Easy replace does it for you.
 		</div>
 	</div>
 </div>

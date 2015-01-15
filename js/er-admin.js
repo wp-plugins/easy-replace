@@ -12,6 +12,11 @@ var ERForm = {
   {    
     ERForm.settings.formObj = $(FormId);
 
+    if(Validator.check(ERForm.settings.formObj) == false)
+    {
+        return false;
+    }
+
     $.ajax({
       url: ajaxurl,
       type: 'post',
@@ -38,3 +43,28 @@ var ERForm = {
     }); 
   }
 };
+
+var Validator = {
+
+    init: function()
+    {
+
+    },
+
+    check: function(FormObj)
+    {
+        return FormObj.validator('checkform', FormObj);
+    },
+
+    set: function(FormId)
+    {
+        $(FormId+' input').validator({events   : 'blur change'});
+    },
+
+};
+
+$(function() {
+
+    Validator.set('#er_add_form"');
+
+});
