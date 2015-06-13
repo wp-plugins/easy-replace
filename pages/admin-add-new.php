@@ -2,16 +2,16 @@
 $post_types = get_post_types( '', 'names' ); 
 ?>
 
-<div class="wrap">
+<div class="wrap t201plugin">
  	<h2>
  		<?php esc_html_e( 'Add New' , 'easy-replace');?>
- 		<a href="<?php print admin_url('admin.php?page=er-dashboard'); ?>" class="add-new-h2"><?php esc_html_e( 'Back' , 'easy-replace');?></a>
+ 		<a href="<?php print admin_url('admin.php?page=er-dashboard'); ?>" class="add-new-h2"><?php esc_html_e( 'All Replacements' , 'easy-replace');?></a>
  	</h2>
 	
-	<div id="message" class="updated below-h2 fr-msg er_success_msg">
+	<div id="message" class="updated below-h2 think201-wp-msg er_success_msg">
 		<p>Form has been added</p>
 	</div>
-	<div id="message" class="error below-h2 fr-msg er_error_msg">
+	<div id="message" class="error below-h2 think201-wp-msg er_error_msg">
 		<p>Form has been not added</p>
 	</div>
  	<div class="tbox">
@@ -25,7 +25,15 @@ $post_types = get_post_types( '', 'names' );
 		            	<table class="form-table">
 		            		<tr valign="top">
 		            			<th scope="row">
-		            				<label for="sourcestring">SourceString:</label>
+		            				<label for="name">Name:</label>
+		            			</td>
+		            			<td>
+		            				<input type="text" id="name" name="name" placeholder="Optional friendly name" data-validations="">
+		            			</td>
+		            		</tr>
+		            		<tr valign="top">
+		            			<th scope="row">
+		            				<label for="sourcestring">Word(s) to look for:</label>
 		            			</td>
 		            			<td>
 		                       		 <input type="text" id="sourcestring" name="sourcestring" placeholder="String to be Found" data-validations="required">
@@ -33,10 +41,10 @@ $post_types = get_post_types( '', 'names' );
 		            		</tr>
 		            		<tr valign="top">
 		            			<th scope="row">
-		            				 <label for="destinationstring">Destination String:</label>
+		            				 <label for="destinationstring">Replace with</label>
 		            			</td>
 		            			<td>
-		                       		 <input type="text" id="destinationstring" name="destinationstring" placeholder="String to be Replaced" value="" data-validations="required">
+		                       		 <textarea id="destinationstring" name="destinationstring" placeholder="String to be Replaced" value="" data-validations="required"> </textarea>
 		            			</td>
 		            		</tr>
 		            		<tr valign="top">

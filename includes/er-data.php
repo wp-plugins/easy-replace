@@ -7,11 +7,16 @@ class ERData
 	{
 		global $wpdb;
 
-		$table_prefix = $wpdb->prefix;
-		$easy_replace = $table_prefix.'easyreplace';	
-		
-		$QueryforData = $wpdb->prepare( "SELECT * FROM $easy_replace WHERE status = %s", 1);
-		$Data = $wpdb->get_results($QueryforData);
+		$easy_replace = $wpdb->prefix.'easyreplace';	
+
+		$SQLQuery =  $wpdb->prepare("SELECT * FROM $easy_replace WHERE status = %s", 1);
+
+		if(isset($_POST['s']))
+		{
+			$SQLQuery .=  " AND name LIKE '%".$_POST['s']."%'";
+		}
+
+		$Data = $wpdb->get_results($SQLQuery);
 
 		return $Data;
 	}
@@ -39,6 +44,17 @@ class ERData
 		$Data = $wpdb->get_results($QueryforData);
 
 		return $Data;
+	}
+
+	public static function deleteReplacement($id)
+	{
+		global $wpdb;
+
+		$er = $wpdb->prefix.'easyreplace';
+		
+		$wpdb->delete( $er, array( 'id' => $id ), array( '%d' ) );
+
+		return true;
 	}
 
 }

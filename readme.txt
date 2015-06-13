@@ -3,9 +3,9 @@ Contributors: think201, yashaswinisprakash, aster_senpai
 Tags: find, replace, string, replace, word, match
 Requires at least: 3.5.2
 Donate link: http://www.think201.com/
-Tested up to: 4.1
-Stable tag: 1.1
-Version: 1.1
+Tested up to: 4.2
+Stable tag: 1.2
+Version: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -78,3 +78,8 @@ Please uninstall & reinstall the plugin to work properly. You would loose previo
 = 1.1 = 
 - UI Enhancements 
 - Whole word match feature integrated
+
+= 1.2 = 
+- Issues Fixing
+- Search functionality added
+- Delete functionality

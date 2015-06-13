@@ -6,7 +6,7 @@ Description: Easy Replace (ER) helps you find and replace phrases at ease
 Author: Think201
 Text Domain: easy-replace
 Domain Path: /languages
-Version: 1.1
+Version: 1.2
 Author URI: http://www.think201.com
 License: GPL v1
 
@@ -52,7 +52,7 @@ if ( !defined( 'ER_BASENAME' ) )
 define( 'ER_BASENAME', plugin_basename( __FILE__ ) );
 
 if ( !defined( 'ER_VERSION' ) )
-define('ER_VERSION', '1.1' );
+define('ER_VERSION', '1.2' );
 
 if ( !defined( 'ER_PLUGIN_DIR' ) )
 define('ER_PLUGIN_DIR', dirname(__FILE__) );

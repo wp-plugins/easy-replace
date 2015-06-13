@@ -14,10 +14,8 @@ gulp.task('watch', function ()
 
 gulp.task('css', function () 
 {
-  	gulp.src('scss/er.scss')
-  	.pipe(sass({sourcemapPath: 'scss', style: 'compressed'}))
-  	.on('error', function (err) { console.log(err.message); })
-    .pipe(gulp.dest('./assets/css'));    
+  return sass(cssDir)
+  .pipe(gulp.dest('./assets/css'));   
 });
 
 

@@ -27,21 +27,8 @@ class ERListTable extends \WP_List_Table
 
     private function get_sql_results()
     {
-        global $wpdb;
-
-        $easyreplace = $wpdb->prefix.'easyreplace';
-
-        $args = array( 'id', 'replaceat', 'sourcestring', 'destinationstring', 'created_at', 'occurences');
-        
-        $sql_select = implode( ', ', $args );
-
-        $query = "SELECT $sql_select
-                  FROM $easyreplace
-               	  ORDER BY $this->orderby $this->order ";
-
-        $sql_results = $wpdb->get_results($query);
-
-        return $sql_results;
+        $Lists = ERData::getList();
+        return $Lists;
     }
 
     public function set_order()
@@ -91,11 +78,12 @@ class ERListTable extends \WP_List_Table
     {
         $columns = array(
             'slno'              => __( 'Sl No.' ),
+            'name'              => __( 'Name' ),
             'sourcestring'         => __( 'Source String' ),
             'destinationstring'         => __( 'Replacement' ),
             'replaceat'        => __('Replace At'),
-            'occurences'        => __('Occurences'),
-            'created_at'       => __( 'Created On' )
+            'created_at'       => __( 'Created On' ),
+            'actions'       => __( 'Action' ),
         );
 
         return $columns;        
@@ -227,6 +215,8 @@ class ERListTable extends \WP_List_Table
                 $item->created_at = date("F j, Y, g:i a",strtotime($item->created_at));
 
                 $item->replaceat = ucfirst($item->replaceat);
+
+                $item->actions = '<a href="'.admin_url('admin.php?page=er-dashboard&action=delete&id='.$item->id).'">Delete</a>';
                 
                 $process_items[$key] = $item;
     		}
